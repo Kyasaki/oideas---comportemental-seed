@@ -47,4 +47,8 @@
 		const content = encodeHTML(phrase).replace(/\n/g, '<br/>')
 		$phrase.innerHTML = `<div>${content}</div>`
 	</script>
+
+	<script>
+		document.body.addEventListener('dblclick', document.body.requestFullscreen())
+	</script>
 </html>
