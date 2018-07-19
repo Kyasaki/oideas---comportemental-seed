@@ -51,7 +51,7 @@
 	<script>
 		const requestFullscreen = el => {
 			const call = el.requestFullscreen || el.webkitRequestFullscreen
-			call ? call() : alert('Fullscreen not supported')
+			call ? call.call(el) : alert('Fullscreen not supported')
 		}
 		document.body.addEventListener('dblclick', requestFullscreen(document.body))
 	</script>
