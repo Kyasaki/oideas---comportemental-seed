@@ -1,0 +1,127 @@
+* {
+	border: 0 solid #000;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	font: inherit;
+	color: inherit;
+	text-shadow: inherit;
+	text-align: inherit;
+	box-sizing: border-box;
+	border-radius: 0;
+	align-items: center;
+	justify-content: center;
+	cursor: inherit;
+}
+
+body {
+	background: rgb(34, 58, 90);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	cursor: none;
+}
+
+#body::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: url(/res/bg.jpg) center no-repeat;
+	background-size: cover;
+	opacity: 0.3;
+	filter: blur(5px);
+	animation: fade infinite 2s ease-in-out alternate;
+}
+
+#body::after {
+	content: "";
+	color: white;
+	display: inline-block;
+	text-align: center;
+	position: fixed;
+	top: calc(50vh - 25vmin);
+	left: calc(50vw - 25vmin);
+	width: 50vmin;
+	height: 50vmin;
+	border: 10px solid #fff;
+	border-bottom-color: #eff;
+	border-radius: 100%;
+	box-shadow: 0 0 100px rgba(154, 231, 255, 0.87), 0 0 100px rgba(154, 231, 255, 0.87) inset;
+	animation: spin-comportment infinite 10s ease-in-out, talk infinite 30s cubic-bezier(0.000, 1.650, 1.000, -0.600), text-grow infinite alternate .5s ease;
+	line-height: 10vmin;
+	text-shadow: 1px 1px 0px #888;
+	font-size: 25px;
+}
+
+#time {
+	position: fixed;
+	text-align: center;
+	color: rgba(255,255,255,0.3);
+	position: fixed;
+	top: calc(50vh - 60vmin);
+	left: calc(50vw - 60vmin);
+	width: 120vmin;
+	height: 120vmin;
+	border-radius: 100%;
+	transform: rotate(45deg);
+	padding: 50px;
+	line-height: 30px;
+}
+
+#time::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 120vmin;
+	height: 120vmin;
+	border-radius: 100%;
+	border: 5px dotted rgba(255,255,255,0.3);
+	animation: spin infinite 1000s linear;
+}
+
+@keyframes spin {
+	from {transform: rotate(0)}
+	to {transform: rotate(3600deg)}
+}
+
+@keyframes spin-comportment {
+	from {transform: rotate(0)}
+	5% {transform: rotate(30deg)}
+	8% {transform: rotate(-30deg)}
+	12% {transform: rotate(-36deg)}
+	13% {transform: rotate(-30deg)}
+	15% {transform: rotate(-60deg)}
+	16% {transform: rotate(-80deg)}
+	24% {transform: rotate(-60deg)}
+	28% {transform: rotate(360deg)}
+	35% {transform: rotate(380deg)}
+	45% {transform: rotate(360deg)}
+	70% {transform: rotate(480deg)}
+	95% {transform: rotate(0deg)}
+	to {transform: rotate(3600deg)}
+}
+
+@keyframes fade {
+	from {opacity: 0.2};
+}
+
+@keyframes talk {
+	0% {content: "(・ヘ・?)"}
+	10% {content: "（；¬＿¬)"}
+	20% {content: "(╬ Ò ‸ Ó)"}
+	30% {content: "ೕ(˃̵ᴗ˂̵ ๑)"}
+	40% {content: "	(>_<、)"}
+	50% {content: "	凸( ` ﾛ ´ )凸"}
+	60% {content: "	╮(￣ω￣;)╭"}
+	70% {content: "	ლ(ಠ_ಠ ლ)"}
+	80% {content: "ლ(¯ロ¯\"ლ)"}
+	90% {content: "	(¬‿¬ )"}
+	100% {content: "(・ヘ・?)"}
+}
+
+@keyframes text-grow {
+	to {font-size: 2em;}
+}

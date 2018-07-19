@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset=utf-8 />
+		<link rel=stylesheet href=/css/main.css />
+	</head>
+	<body>
+		<div id=body>
+			<div id=time>
+				<div>04:32</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		const $time = document.getElementById('time')
+		const pad = n => (n < 10 ? '0' : '') + n
+		setInterval(() => {
+			const date = new Date()
+			$time.innerHTML = `${date.getFullYear()}年${pad(date.getMonth())}月${pad(date.getDay())}日<br/>`
+				+ `${pad(date.getHours())}時${pad(date.getMinutes())}分${pad(date.getSeconds())}秒`
+				+ ` GMT${date.getTimezoneOffset() / 60}`
+		}, 100)
+	</script>
+</html>
