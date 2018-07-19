@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset=utf-8 />
-		<link rel=stylesheet href=/css/main.css />
+		<link rel=stylesheet href=css/main.css />
 	</head>
 	<body>
 		<div id=body>
@@ -12,13 +12,33 @@
 		</div>
 	</body>
 	<script>
-		const $time = document.getElementById('time')
+		const $time = document.getElementById('time') || debug.throw('could not find element #time')
 		const pad = n => (n < 10 ? '0' : '') + n
+		const explicitSign = n => (n < 0 ? '' : '+') + n
 		setInterval(() => {
 			const date = new Date()
 			$time.innerHTML = `${date.getFullYear()}年${pad(date.getMonth())}月${pad(date.getDay())}日<br/>`
 				+ `${pad(date.getHours())}時${pad(date.getMinutes())}分${pad(date.getSeconds())}秒`
 				+ ` GMT${date.getTimezoneOffset() / 60}`
 		}, 100)
+	</script>
+
+	<script>
+		const $phrase = document.getElementById('phrase') || debug.throw('could not find element #phrase')
+		const phrase = decodeURIComponent(location.search.substr(1))
+		const encodeHTML = html => {
+			const amplessHtml = html.replace(/&/g, '&amp;')
+			const replacements = {
+				'<': '&lt;',
+				'>': '&gt;'
+			}
+			return Object.keys(replacements).reduce((html, key) => {
+				const search = new RegExp(key, 'g')
+				return html.replace(search, replacements[key])
+			}, html)
+		}
+
+		const content = encodeHTML(phrase).replace(/\n/g, '<br/>')
+		$phrase.innerHTML = `<div>${content}</div>`
 	</script>
 </html>
